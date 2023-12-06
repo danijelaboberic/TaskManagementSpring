@@ -9,7 +9,7 @@ import dim.ris.model.User;
 import dim.ris.repository.UserRepository;
 
 @Service
-public class UserDetailProvider implements UserDetailsService {
+public class CustomUserDetailService implements UserDetailsService {
 	@Autowired
 	UserRepository ur;
 

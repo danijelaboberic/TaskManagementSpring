@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +24,9 @@ public class UserController {
 	@Autowired
 	UserRepository ur;
 	
+	@Autowired
+	PasswordEncoder passwordEncoder;
+	
 	@GetMapping ("/users/getAll")
 	public String getAll(Model m){
 		m.addAttribute("users", ur.findAll());
@@ -31,7 +35,6 @@ public class UserController {
 	
 	@PostMapping ("/admin/add")
 	public String addUser(User u) {
-		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
      	u.setPassword(passwordEncoder.encode(u.getPassword()));
 		ur.save(u);
 		return "redirect:/users/getAll";

@@ -6,18 +6,16 @@
 <html>
 <head>
    <script src="/TaskManagementSpring/js/jquery-3.4.1.min.js"></script>
-    <script src="/TaskManagementSpring/js/bootstrap.min.js"></script> 
-   <script src="/TaskManagementSpring/js/mdb.min.js"></script> 
+    <script src="/TaskManagementSpring/js/bootstrap.js"></script> 
+   <script src="/TaskManagementSpring/js/mdb.js"></script> 
 <meta charset="UTF-8">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
   <!-- Bootstrap core CSS -->
-  <link href="/TaskManagementSpring/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/TaskManagementSpring/css/bootstrap.css" rel="stylesheet">
   <!-- Material Design Bootstrap -->
-  <link href="/TaskManagementSpring/css/mdb.min.css" rel="stylesheet">
-  <!-- Your custom styles (optional) -->
-  <link href="/TaskManagementSpring/css/style.css" rel="stylesheet">
-<title>Projekat iz razvoja informacionih sistema</title>
+  <link href="/TaskManagementSpring/css/mdb.css" rel="stylesheet">
+  <title>Projekat iz razvoja informacionih sistema</title>
 </head>
 <!--Navbar-->
 <nav class="navbar navbar-expand-lg navbar-dark default-color">
