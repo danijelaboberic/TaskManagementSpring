@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="sf" %>
 
 <!DOCTYPE html>
 <html>
@@ -29,17 +30,29 @@
 				</div>
 			</c:when>
 			<c:otherwise>
-				<form action="/task/user/save" method="post">
+				<sf:form action="/task/user/save" method="post" modelAttribute="user">
 					<h3>Registracija novog korisnika</h3>
 					<div class="pt-3 row">
 						<label class="pr-3 form-label col-1">Ime </label>
-						<input class="form-control col-4" type="text" name="ime" />
+						<sf:input class="form-control col-4" type="text" path="name" />
 					</div>
+					<div class="pt-3 row">
+						<label class="pr-3 form-label col-1">Email </label>
+						<sf:input class="form-control col-4" type="text" path="email" />
+					</div>
+					<div class="pt-3 row">
+						<label class="pr-3 form-label col-1">Lozinka </label>
+						<sf:input class="form-control col-4" type="password" path="password" />
+					</div>
+					<div class="pt-3 row">
+						<label class="pr-3 form-label col-1">Uloga </label>
+						    <sf:select path="uloga" items="${roleList}" itemValue="code" itemLabel="value"/>
+					</div> 
 					<div class="row pt-5 pl-3">
 						<button class=" btn btn-primary" type="submit">Registruj</button>
 					</div>
 
-				</form>
+				</sf:form>
 			</c:otherwise>
 
 		</c:choose>
