@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="jakarta.tags.core"%>
     
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +18,10 @@
 <title>Prikaz projekta</title>
 </head>
 <body>
+
+
 <div class="container my-4">
+
     <h3>Informacije o projektima</h3>
     <table class="table table-striped table-hover">
         <thead class="thead-dark">
