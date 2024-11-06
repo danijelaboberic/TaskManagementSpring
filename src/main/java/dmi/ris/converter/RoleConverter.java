@@ -6,29 +6,26 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyEditor;
 import java.util.HashMap;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
+import dim.ris.model.Role;
 import dmi.ris.dto.RoleDTO;
+import dmi.ris.repository.RoleRepository;
 
 @Component
-public class RoleConverter implements Converter<String, RoleDTO> {
+public class RoleConverter implements Converter<Integer, Role> {
 
-   private HashMap<String, RoleDTO> roleService = new HashMap();
-    
-   public RoleConverter(){
-     this.roleService.put("1", new RoleDTO("1","ADMIN"));
-     this.roleService.put("2", new RoleDTO("2","RADNIK"));
-     this.roleService.put("3", new RoleDTO("3","DIREKTOR"));
+    @Autowired
+    RoleRepository roleRepository;
 
-
-   }
    @Override
-    public RoleDTO convert(String source) {
+    public Role convert(Integer source) {
         if (source == null) {
             return null;
         }  
-            return roleService.get(source);   
+            return roleRepository.findById(source).get();   
     }
 }
 

@@ -21,7 +21,7 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<div class="container-fluid">
+	<div class="container my-4">
 		<c:choose>
 			<c:when test="${not empty poruka}">
 			${poruka} ${korisnik}
@@ -37,8 +37,8 @@
 						<sf:input class="form-control col-4" type="text" path="name" />
 					</div>
 					<div class="pt-3 row">
-						<label class="pr-3 form-label col-1">Email </label>
-						<sf:input class="form-control col-4" type="text" path="email" />
+						<label class="pr-3 form-label col-1">Korisnicko ime </label>
+						<sf:input class="form-control col-4" type="text" path="username" />
 					</div>
 					<div class="pt-3 row">
 						<label class="pr-3 form-label col-1">Lozinka </label>
@@ -46,7 +46,7 @@
 					</div>
 					<div class="pt-3 row">
 						<label class="pr-3 form-label col-1">Uloga </label>
-						    <sf:select path="uloga" items="${roleList}" itemValue="code" itemLabel="value"/>
+						    <sf:select path="role" items="${roleList}" itemValue="idrole" itemLabel="name"/>
 					</div> 
 					<div class="row pt-5 pl-3">
 						<button class=" btn btn-primary" type="submit">Registruj</button>
