@@ -6,17 +6,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-<!-- Bootstrap JS and dependencies -->
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <meta charset="UTF-8">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+
     <style>
         .invalid {
             color: red;
@@ -24,6 +16,7 @@
     </style>
 </head>
 <body>
+<jsp:include page="/jsp/menu.jsp" />
   <div class="container my-4">
 	<h3 class="mb-5">Registracija novog projekta</h3>
 	<sf:form action="/task/projects/save" method="post" modelAttribute="project">

@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import dim.ris.model.Role;
 import dim.ris.model.User;
-import dmi.ris.dto.RoleDTO;
-import dmi.ris.dto.UserDTO;
 import dmi.ris.repository.RoleRepository;
 import dmi.ris.repository.UserRepository;
 
