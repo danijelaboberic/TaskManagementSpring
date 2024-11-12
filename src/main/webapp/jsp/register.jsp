@@ -32,7 +32,7 @@
 			</c:when>
 			<c:otherwise>
 				<sf:form action="/task/user/save" method="post" modelAttribute="user">
-					<h3>Registracija novog korisnika</h3>
+					<h3 class="mb-5">Registracija novog korisnika</h3>
 					<div class="pt-3 row">
 						<label class="pr-3 form-label col-1">Ime </label>
 						<sf:input class="form-control col-4" type="text" path="name" />

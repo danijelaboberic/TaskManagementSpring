@@ -22,7 +22,7 @@
 
 <div class="container my-4">
 
-    <h3>Informacije o projektima</h3>
+    <h3 class="mb-5">Informacije o projektima</h3>
     <table class="table table-striped table-hover">
         <thead class="thead-dark">
             <tr>
@@ -44,6 +44,10 @@
             </c:forEach>
         </tbody>
     </table>
+    <form action="/task/projects/add" method="get">
+    <button type="submit" class="mt-5 btn btn-primary">Dodaj projekat</button>
+</form>
+    
 </div>
 
 </body>
