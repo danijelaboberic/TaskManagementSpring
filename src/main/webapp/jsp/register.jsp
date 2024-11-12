@@ -27,23 +27,23 @@
 				<sf:form action="/task/user/save" method="post" modelAttribute="user">
 					<h3 class="mb-5"><st:message code="user.register.title"/></h3>
 					<div class="pt-3 row">
-						<label class="pr-3 form-label col-1"><st:message code="user.name"/> </label>
-						<sf:input class="form-control col-4" type="text" path="name" />
+						<label class="pr-3 form-label"><st:message code="user.name"/> </label>
+						<sf:input class="form-control" type="text" path="name" />
 					</div>
 					<div class="pt-3 row">
-						<label class="pr-3 form-label col-1"><st:message code="user.username"/></label>
-						<sf:input class="form-control col-4" type="text" path="username" />
+						<label class="pr-3 form-label"><st:message code="user.username"/></label>
+						<sf:input class="form-control" type="text" path="username" />
 					</div>
 					<div class="pt-3 row">
-						<label class="pr-3 form-label col-1"><st:message code="user.password"/></label>
-						<sf:input class="form-control col-4" type="password" path="password" />
+						<label class="pr-3 form-label"><st:message code="user.password"/></label>
+						<sf:input class="form-control" type="password" path="password" />
 					</div>
 					<div class="pt-3 row">
-						<label class="pr-3 form-label col-1"><st:message code="user.role"/></label>
+						<label class="pr-3 form-label"><st:message code="user.role"/></label>
 						    <sf:select class="form-select" path="role" items="${roleList}" itemValue="idrole" itemLabel="name"/>
 					</div> 
 					<div class="row pt-5 pl-3">
-						<button class=" btn btn-primary" type="submit"><st:message code="user.save"/></button>
+						<button class="col-2 btn btn-primary" type="submit"><st:message code="user.save"/></button>
 					</div>
 
 				</sf:form>

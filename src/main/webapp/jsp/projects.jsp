@@ -38,7 +38,7 @@
         </tbody>
     </table>
     <form action="/task/projects/add" method="get">
-    <button type="submit" class="mt-5 btn btn-primary">Dodaj projekat</button>
+    <button type="submit" class="mt-5 btn btn-primary col-2">Dodaj projekat</button>
 </form>
     
 </div>

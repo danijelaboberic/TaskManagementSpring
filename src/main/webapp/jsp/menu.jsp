@@ -45,9 +45,11 @@
 						<ul class="dropdown-menu dropdown-menu-dark"
 							aria-labelledby="navbarDarkDropdownMenuLink">
 							<li><a class="dropdown-item"
-								href="/task/language/set?lang=en">Engleski</a></li>
+								href="/task/language/set?lang=en"><st:message
+								code="menu.language.en" /></a></li>
 							<li><a class="dropdown-item"
-								href="/task/language/set?lang=sr">Srpski</a></li>
+								href="/task/language/set?lang=sr"><st:message
+								code="menu.language.sr" /></a></li>
 						</ul></li>
 				</ul>
 			</div>
