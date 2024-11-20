@@ -18,7 +18,7 @@ public class ProjectService {
 	@Autowired
 	ProjectRepository projectRepository;
 	
-	@Cacheable("projects")
+	//@Cacheable("projects")
 	public List<Project> searchProject(String query){
 		if(query == null || query.isBlank()) {
 			return projectRepository.findAll();

@@ -11,9 +11,9 @@ public class TimerService {
 	@Autowired
 	ProjectService projectService;
 	
-	@Scheduled(fixedRate = 20000)
+	@Scheduled(cron = "0 0 13 * * ?")
 	public void repeatSomething() {
-		System.out.println("Tajmer je trigerovan...");
+		System.out.println("Tajmer je trigerovan u 13:00...");
 		//TODO implementacija neke poslovne logike
 	
 	
