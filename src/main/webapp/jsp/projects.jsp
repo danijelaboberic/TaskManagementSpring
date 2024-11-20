@@ -22,7 +22,10 @@
                 <th>ID</th>
                 <th>Naslov</th>
                 <th>Opis</th>
+                 <th>Slika</th>
                 <th>Rukovodilac</th>
+                <th></th>
+                
             </tr>
         </thead>
         <tbody>
@@ -31,8 +34,13 @@
                     <td>${project.idProject}</td>
                     <td>${project.title}</td>
                     <td>${project.description}</td>
+                    <td>
+                    <a href="/task/projects/show/${project.idProject}" target="blank">
+                    <img alt="" class="img-thumbnail" src="/task/projects/show/${project.idProject}">
+                    </a>
+                    </td>
                     <td>${project.user.name}</td>
-                    
+                    <td><a href="/task/projects/contactLeader?email=${project.user.username}">Pošalji mejl rukovodiocu</a></td>
                 </tr>
             </c:forEach>
         </tbody>

@@ -2,6 +2,7 @@ package dmi.ris.controler;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +26,7 @@ public class UserController {
 	@Autowired
 	UserRepository userRepository;
 	
-	@ModelAttribute("roleList") 
+	@ModelAttribute("roleList")
 	private List<Role> initRoles(){
 		List<Role> roles = roleRepository.findAll();	
 		return roles;

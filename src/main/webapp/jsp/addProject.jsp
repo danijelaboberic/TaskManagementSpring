@@ -19,8 +19,7 @@
 	<jsp:include page="/jsp/menu.jsp" />
 	<div class="container my-4">
 		<h3 class="mb-5">Registracija novog projekta</h3>
-		<sf:form action="/task/projects/save" method="post"
-			modelAttribute="project">
+		<sf:form action="/task/projects/save" method="post" modelAttribute="project" enctype="multipart/form-data">
 			<div class="pt-3 row mb-3">
 				<label class="form-label">Naslov projekta</label>
 				<sf:input type="text" class="col-4 form-control" path="title" />
@@ -35,6 +34,11 @@
 				<label class="form-label">Rukovodilac</label>
 				<sf:select class="form-select" path="user" items="${leaders}"
 					itemValue="idUser" itemLabel="name" />
+			</div>
+			<div class="row mb-3">
+				<label class="form-label">Slike projekta</label>
+				<input type="file" class="col-4 form-control" name="file" />
+
 			</div>
 			<button type="submit" class="col-2 mt-5 btn btn-primary">Sačuvaj</button>
 		</sf:form>

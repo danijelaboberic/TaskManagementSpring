@@ -22,7 +22,7 @@
 
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="/task"><st:message code="menu.home" /></a>
+			<a class="navbar-brand" href="/task/home"><st:message code="menu.home" /></a>
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown"
 				aria-controls="navbarNavDarkDropdown" aria-expanded="false"

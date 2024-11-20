@@ -10,4 +10,5 @@ import dim.ris.model.Project;
 @Repository
 public interface ProjectRepository extends JpaRepository<Project, Integer>{
 
+List<Project> findByDescriptionContaining(String query);
 }
