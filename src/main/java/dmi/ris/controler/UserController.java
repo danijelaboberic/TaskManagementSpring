@@ -2,7 +2,7 @@ package dmi.ris.controler;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,6 +26,9 @@ public class UserController {
 	@Autowired
 	UserRepository userRepository;
 	
+	@Autowired
+	PasswordEncoder passwordEncoder;
+	
 	@ModelAttribute("roleList")
 	private List<Role> initRoles(){
 		List<Role> roles = roleRepository.findAll();	
@@ -45,7 +48,7 @@ public class UserController {
 	
 	@PostMapping("/save")
 	public String save(@ModelAttribute("user") User user, Model m) {
-
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		userRepository.save(user);
 		m.addAttribute("poruka", "Uspesno sacuvan korisnik");
 		m.addAttribute("korisnik", user.getName());

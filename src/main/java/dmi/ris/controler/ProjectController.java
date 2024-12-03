@@ -52,12 +52,12 @@ public class ProjectController {
 		return "projects";
 	}
 	
-	@GetMapping("/add")
+	@GetMapping("/admin/add")
 	public String addProject(@ModelAttribute Project project, Model m) {
 		return "addProject";
 	}
 	
-	@PostMapping("/save")
+	@PostMapping("/admin/save")
 	public String saveProject(@Valid Project p, BindingResult e, @RequestParam("file") MultipartFile file) {
 		if (e.hasErrors()) {
 			return "addProject";
@@ -68,7 +68,7 @@ public class ProjectController {
 
 	}
 	
-	@GetMapping("/contactLeader")
+	@GetMapping("/manager/contactLeader")
 	public String contactLeader(@RequestParam("email") String email) {
 		String text = "Dobar dan, zelim da saradjujem sa vama. Molim vas da me kontaktirate!";
 		emailService.sendEmail(email, "user@ris.pmf","Contact leader", text);
@@ -82,6 +82,7 @@ public class ProjectController {
         	byte[] slika = p.getPictures().iterator().next().getPicture();
     		if (slika != null) {
     			try {
+    				response.setContentType("image/jpg");
     				response.getOutputStream().write(slika);
     			} catch (Exception e) {
     			

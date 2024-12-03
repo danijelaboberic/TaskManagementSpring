@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="jakarta.tags.core"%>
-    
+    <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
     
 <!DOCTYPE html>
 <html>
@@ -40,14 +40,16 @@
                     </a>
                     </td>
                     <td>${project.user.name}</td>
-                    <td><a href="/task/projects/contactLeader?email=${project.user.username}">Pošalji mejl rukovodiocu</a></td>
+                    <td><a href="/task/projects/admin/contactLeader?email=${project.user.username}">Pošalji mejl rukovodiocu</a></td>
                 </tr>
             </c:forEach>
         </tbody>
     </table>
-    <form action="/task/projects/add" method="get">
-    <button type="submit" class="mt-5 btn btn-primary col-2">Dodaj projekat</button>
-</form>
+    <sec:authorize access="hasRole('ADMIN')">
+	    <form action="/task/projects/admin/add" method="get">
+	    	<button type="submit" class="mt-5 btn btn-primary col-2">Dodaj projekat</button>
+		</form>
+	</sec:authorize>
     
 </div>
 

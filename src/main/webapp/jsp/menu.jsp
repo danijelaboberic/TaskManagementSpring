@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="st" uri="http://www.springframework.org/tags"%>
-
+   <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,11 +31,13 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
 				<ul class="navbar-nav">
+				<sec:authorize access="isAuthenticated()">
 					<li class="nav-item"><a class="nav-link"
 						href="/task/user/register"><st:message code="menu.register" /></a>
 					</li>
 					<li class="nav-item"><a class="nav-link"
 						href="/task/projects/all"><st:message code="menu.projects" /></a></li>
+				</sec:authorize>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#"
 						id="navbarDarkDropdownMenuLink" role="button"
@@ -51,6 +53,12 @@
 								href="/task/language/set?lang=sr"><st:message
 								code="menu.language.sr" /></a></li>
 						</ul></li>
+						<sec:authorize access="!isAuthenticated()">
+							<li class="nav-item"><a class="nav-link" href="/task/jsp/login.jsp"><st:message code="menu.login" /></a></li>
+						</sec:authorize>
+						<sec:authorize access="isAuthenticated()">
+							<li class="nav-item"><a class="nav-link" href="/task/logout"><st:message code="menu.logout" /></a></li>
+						</sec:authorize>
 				</ul>
 			</div>
 		</div>

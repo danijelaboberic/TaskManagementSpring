@@ -15,7 +15,6 @@ public class HomeController {
 	
 	@GetMapping("/home")
 	public String home() {
-		//throw new RuntimeException();
 		return "home";
 	}
 	
