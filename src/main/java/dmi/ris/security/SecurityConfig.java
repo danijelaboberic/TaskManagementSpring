@@ -1,5 +1,6 @@
 package dmi.ris.security;
 
+import org.springframework.boot.web.servlet.server.CookieSameSiteSupplier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -11,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.header.writers.XXssProtectionHeaderWriter.HeaderValue;
 
 @Configuration
 @EnableWebSecurity
@@ -18,12 +20,18 @@ public class SecurityConfig {
 	
 	@Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests(requests -> requests
+        http
+        //ovo je opciono za zastitu od XSS napada
+        /*.headers(headers -> headers
+				.xssProtection(xss -> xss
+						.headerValue(HeaderValue.ENABLED_MODE_BLOCK)
+				)
+			)*/
+        .authorizeHttpRequests(requests -> requests
                                 .requestMatchers("/projects/admin/**").hasRole("ADMIN")
                                 .requestMatchers("/users/manager/**").hasAnyRole("ADMIN","MANAGER")
                                 .requestMatchers("/home","language/**").permitAll()
                                 .requestMatchers("/jsp/home.jsp").permitAll()
-
                                 .anyRequest().authenticated())
                 		.formLogin(form -> form
 	                        .loginPage("/jsp/login.jsp").permitAll()
@@ -33,7 +41,6 @@ public class SecurityConfig {
                 			 .logoutSuccessUrl("/jsp/home.jsp"))
                 		.exceptionHandling(handling -> handling.accessDeniedPage("/jsp/access_denied.jsp"))
                 		.csrf(csrf -> csrf.disable());
-
 		return http.build();
 			
 	}
@@ -81,7 +88,11 @@ public class SecurityConfig {
 		return new BCryptPasswordEncoder();
 	}*/
 	
-
+    //ako zelimo da podesimo SameSite programski
+   /* @Bean
+     CookieSameSiteSupplier applicationCookieSameSiteSupplier() {
+        return CookieSameSiteSupplier.ofStrict();
+    }*/
 
 	
 

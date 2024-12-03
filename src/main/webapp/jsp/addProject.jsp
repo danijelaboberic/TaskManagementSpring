@@ -19,7 +19,7 @@
 	<jsp:include page="/jsp/menu.jsp" />
 	<div class="container my-4">
 		<h3 class="mb-5">Registracija novog projekta</h3>
-		<sf:form action="/task/projects/save" method="post" modelAttribute="project" enctype="multipart/form-data">
+		<sf:form action="/task/projects/admin/save" method="post" modelAttribute="project" enctype="multipart/form-data">
 			<div class="pt-3 row mb-3">
 				<label class="form-label">Naslov projekta</label>
 				<sf:input type="text" class="col-4 form-control" path="title" />
