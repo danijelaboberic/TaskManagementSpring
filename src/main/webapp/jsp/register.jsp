@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Registracija korisnika</title>
+<title><st:message code="user.register.pageTitle"/></title>
 <!-- Bootstrap CSS -->
 </head>
 <body>
@@ -17,10 +17,10 @@
 
 	<div class="container my-4">
 		<c:choose>
-			<c:when test="${not empty poruka}">
-			${poruka} ${korisnik}
+			<c:when test="${not empty korisnik}">
+			<st:message code="user.save.success"/> <c:out value="${korisnik}"/>
 			<div class="mt-4">
-					<a href="/task/user/register">Nazad</a>
+					<a href="/task/user/register"><st:message code="user.back"/></a>
 				</div>
 			</c:when>
 			<c:otherwise>
@@ -29,18 +29,22 @@
 					<div class="pt-3 row">
 						<label class="pr-3 form-label"><st:message code="user.name"/> </label>
 						<sf:input class="form-control" type="text" path="name" />
+						<sf:errors path="name" cssClass="text-danger" />
 					</div>
 					<div class="pt-3 row">
 						<label class="pr-3 form-label"><st:message code="user.username"/></label>
 						<sf:input class="form-control" type="text" path="username" />
+						<sf:errors path="username" cssClass="text-danger" />
 					</div>
 					<div class="pt-3 row">
 						<label class="pr-3 form-label"><st:message code="user.password"/></label>
-						<sf:input class="form-control" type="password" path="password" />
+						<sf:password class="form-control" path="password" />
+						<sf:errors path="password" cssClass="text-danger" />
 					</div>
 					<div class="pt-3 row">
 						<label class="pr-3 form-label"><st:message code="user.role"/></label>
 						    <sf:select class="form-select" path="role" items="${roleList}" itemValue="idrole" itemLabel="name"/>
+						    <sf:errors path="role" cssClass="text-danger" />
 					</div> 
 					<div class="row pt-5 pl-3">
 						<button class="col-2 btn btn-primary" type="submit"><st:message code="user.save"/></button>

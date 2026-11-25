@@ -1,5 +1,6 @@
 package dmi.ris.controler;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import dim.ris.model.Project;
 import dim.ris.model.User;
+import dmi.ris.exception.ResourceNotFoundException;
 import dmi.ris.repository.ProjectRepository;
 import dmi.ris.repository.UserRepository;
 import dmi.ris.service.EmailService;
@@ -76,22 +78,14 @@ public class ProjectController {
 	}
 	
 	@GetMapping(value = "show/{projectID}")
-	public void getPicture(@PathVariable("projectID") Integer projectID, HttpServletResponse response) {
+	public void getPicture(@PathVariable("projectID") Integer projectID, HttpServletResponse response) throws IOException {
 		Project p = projectService.getProject(projectID);
-        if (p != null) {
-        	byte[] slika = p.getPictures().iterator().next().getPicture();
-    		if (slika != null) {
-    			try {
-    				response.setContentType("image/jpg");
-    				response.getOutputStream().write(slika);
-    			} catch (Exception e) {
-    			
-    				e.printStackTrace();
-    			}
-    		}
-        }
-		
-	
+		if (p.getPictures().isEmpty()) {
+			throw new ResourceNotFoundException("Projekat sa id=" + projectID + " nema sliku");
+		}
+		byte[] slika = p.getPictures().iterator().next().getPicture();
+		response.setContentType("image/jpeg");
+		response.getOutputStream().write(slika);
 	}
 
 }

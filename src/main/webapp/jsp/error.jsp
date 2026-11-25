@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="st" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title><st:message code="app.title"/></title>
 </head>
 <body>
-<h2>Ovo je greska koju je uhvatio ExceptionHandler method!</h2>
+<h2><st:message code="error.message"/></h2>
 </body>
 </html>

@@ -1,8 +1,8 @@
 package dmi.ris.service;
 
 import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import dim.ris.model.Picture;
 import dim.ris.model.Project;
+import dmi.ris.exception.ResourceNotFoundException;
 import dmi.ris.repository.ProjectRepository;
 
 @Service
@@ -28,26 +29,22 @@ public class ProjectService {
 	}
 	
 	public void saveProject(Project p, MultipartFile file) {
-		try {
-			Picture picture = new Picture();
-			picture.setPicture(file.getBytes());
-			picture.setProject(p);
-			p.getPictures().add(picture);
-			projectRepository.save(p);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if (file != null && !file.isEmpty()) {
+			try {
+				Picture picture = new Picture();
+				picture.setPicture(file.getBytes());
+				picture.setProject(p);
+				p.getPictures().add(picture);
+			} catch (IOException e) {
+				throw new UncheckedIOException("Greska pri citanju uploadovane slike", e);
+			}
 		}
-	
+		projectRepository.save(p);
 	}
 	
 	public Project getProject(Integer id) {
-		Optional<Project> pro = projectRepository.findById(id);
-		if (pro.isPresent()) {
-			return pro.get();
-		}else {
-			return null;
-		}
+		return projectRepository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Projekat sa id=" + id + " ne postoji"));
 	}
 
 }

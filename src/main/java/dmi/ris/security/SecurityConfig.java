@@ -9,6 +9,7 @@ import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -29,8 +30,9 @@ public class SecurityConfig {
 			)*/
         .authorizeHttpRequests(requests -> requests
                                 .requestMatchers("/projects/admin/**").hasRole("ADMIN")
-                                .requestMatchers("/users/manager/**").hasAnyRole("ADMIN","MANAGER")
-                                .requestMatchers("/home","language/**").permitAll()
+                                .requestMatchers("/user/**").hasRole("ADMIN")
+                                .requestMatchers("/user/manager/**").hasAnyRole("ADMIN","MANAGER")
+                                .requestMatchers("/home","/language/**").permitAll()
                                 .requestMatchers("/jsp/home.jsp").permitAll()
                                 .anyRequest().authenticated())
                 		.formLogin(form -> form
@@ -77,16 +79,16 @@ public class SecurityConfig {
 		return new ProviderManager(authenticationProvider);
 	  }
 
-    @Bean
+    /*@Bean
     PasswordEncoder passwordEncoder() {
 	        // NoOpPasswordEncoder koristi običan tekst, samo za testiranje!
 	        return NoOpPasswordEncoder.getInstance();
-	 }
+	 }*/
 	
-	/*@Bean
+	@Bean
 	 PasswordEncoder getPasswordEncoder() {
 		return new BCryptPasswordEncoder();
-	}*/
+	}
 	
     //ako zelimo da podesimo SameSite programski
    /* @Bean

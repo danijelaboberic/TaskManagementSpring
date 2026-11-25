@@ -31,10 +31,12 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
 				<ul class="navbar-nav">
-				<sec:authorize access="isAuthenticated()">
+				<sec:authorize access="hasRole('ADMIN')">
 					<li class="nav-item"><a class="nav-link"
 						href="/task/user/register"><st:message code="menu.register" /></a>
 					</li>
+				</sec:authorize>
+				<sec:authorize access="isAuthenticated()">
 					<li class="nav-item"><a class="nav-link"
 						href="/task/projects/all"><st:message code="menu.projects" /></a></li>
 				</sec:authorize>
